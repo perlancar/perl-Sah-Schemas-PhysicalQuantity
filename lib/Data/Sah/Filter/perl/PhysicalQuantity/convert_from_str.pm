@@ -1,4 +1,4 @@
-package Data::Sah::Filter::perl::PhysicalQuantity::convert_from_string;
+package Data::Sah::Filter::perl::PhysicalQuantity::convert_from_str;
 
 # AUTHORITY
 # DATE
@@ -13,7 +13,7 @@ sub meta {
     +{
         v => 1,
         summary => 'Instantiate Physics::Unit object from string',
-        # might_fail => 1, # we'll let Physics::Unit die
+        # might_fail => 1, # we'll let Physics::Unit die on its own
     };
 }
 

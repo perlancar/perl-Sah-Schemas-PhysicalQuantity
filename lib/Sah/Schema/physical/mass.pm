@@ -1,4 +1,4 @@
-package Sah::Schema::physical::distance;
+package Sah::Schema::physical::mass;
 
 # AUTHORITY
 # DATE
@@ -8,14 +8,14 @@ package Sah::Schema::physical::distance;
 use Physics::Unit; # for examples
 
 our $schema = [obj => {
-    summary => 'A physical distance',
+    summary => 'A physical mass quantity',
     isa => 'Physics::Unit',
-    prefilters => ['PhysicalQuantity::convert_from_str', ['PhysicalQuantity::check_type', {is=>'Distance'}]],
+    prefilters => ['PhysicalQuantity::convert_from_str', ['PhysicalQuantity::check_type', {is=>'Mass'}]],
     examples => [
         #{
-        #    value   => '10 m',
+        #    value   => '10 kg',
         #    valid   => 1,
-        #    validated_value => Physics::Unit->new("10 m"),
+        #    validated_value => Physics::Unit->new("10 kg"),
         #},
         {
             value   => '10 s',

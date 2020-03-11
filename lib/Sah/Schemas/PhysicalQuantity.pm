@@ -11,3 +11,5 @@ package Sah::Schemas::PhysicalQuantity;
 =head1 append:SEE ALSO
 
 L<Physics::Unit> - the backend
+
+L<MooseX::Types::NumUnit>

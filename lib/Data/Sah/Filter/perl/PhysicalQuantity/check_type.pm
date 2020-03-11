@@ -31,15 +31,16 @@ sub filter {
     my %args = @_;
 
     my $dt = $args{data_term};
-
-    my $res = {};
+    my $gen_args = $args{args} // {};
 
     my @check_exprs;
     if (defined $gen_args->{is}) {
-        push @check_exprs, (@check_exprs ? "elsif" : "if") . " (\$pqtype eq ".dmp($gen_args->{is}).qq| {) ["Physical quantity type must be " . |.dmp($gen_args->{is}).qq|, \$tmp] } |;
+        push @check_exprs, (@check_exprs ? "elsif" : "if") .
+            " (\$pqtype ne ".dmp($gen_args->{is}).qq|) { ["Physical quantity type must be " . |.dmp($gen_args->{is}).qq|, \$tmp] } |;
     }
     if (defined $gen_args->{in}) {
-        push @check_exprs, (@check_exprs ? "elsif" : "if") . " (grep { \$pqtype eq \$_ } @{ ".dmp($gen_args->{in}).qq| }) { ["Physical quantity type must be one of " . join(", ", @{|.dmp($gen_args->{iin}).qq|}), \$tmp] } |;
+        push @check_exprs, (@check_exprs ? "elsif" : "if") .
+            " (!grep { \$pqtype eq \$_ } \@{ ".dmp($gen_args->{in}).qq| }) { ["Physical quantity type must be one of " . join(", ", \@{|.dmp($gen_args->{in}).qq|}), \$tmp] } |;
     }
     unless (@check_exprs) {
         push @check_exprs, qq(if (0) { } );

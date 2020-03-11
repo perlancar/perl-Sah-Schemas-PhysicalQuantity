@@ -12,11 +12,11 @@ our $schema = [obj => {
     isa => 'Physics::Unit',
     prefilters => ['PhysicalQuantity::convert_from_str'],
     examples => [
-        {
-            value   => '10 m',
-            valid   => 1,
-            validated_value => Physics::Unit->new("10 m"),
-        },
+        #{
+        #    value   => '10 m',
+        #    valid   => 1,
+        #    validated_value => Physics::Unit->new("10 m"),
+        #},
     ],
 }, {}];
 
